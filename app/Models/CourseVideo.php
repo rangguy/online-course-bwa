@@ -6,21 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class CourseVideo extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
-        'slug',
-        'icon',
+        'path_video',
+        'course_id',
     ];
 
-    protected $guarded = [
-        'id',
-    ];
-
-    public function courses(){
-        return $this->hasMany(Course::class);
+    public function course(){
+        return $this->belongsTo(Course::class);
     }
 }
