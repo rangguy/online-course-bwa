@@ -26,8 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout');
-    Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store');
+    Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout')->middleware('role:student');
+
+    Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store')->middleware('role:student');
+
+    // domain.com/learning/100/5 = belajar install js pada mac os
+    Route::get('/learning/{course}/{courseVideoId}', [FrontController::class, 'learning'])->name('front.learning')->middleware('role:student|teacher|owner');
 
     Route::prefix('admin')->name('admin.')->group(function(){
         // kategori
@@ -43,6 +47,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('subscribe_transactions', SubscribeTranscationController::class)->middleware('role:owner');
 
         // video
+        Route::get('/add/video/{course:id}', [CourseVideoController::class, 'create'])->middleware('role:teacher|owner')->name('course.add_video');
+
+        Route::post('/add/video/save/{course:id}', [CourseVideoController::class, 'store'])->middleware('role:teacher|owner')->name('course.add_video.save');
+
         Route::resource('course_videos', CourseVideoController::class)->middleware('role:owner|teacher');
     });
 
