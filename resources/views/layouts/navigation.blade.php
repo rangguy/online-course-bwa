@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('admin.courses.index')" :active="request()->routeIs('admin.courses.index')">
                         {{ __('Manage Courses') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.teachers.index')" :active="request()->routeIs('admin.teachers.index')">
+                    <x-nav-link :href="route('admin.teachers.index')" :active="request()->routeIs('admin.teachers.index') || request()->routeIs('admin.teachers.create') ||request()->routeIs('admin.teachers.edit')">
                         {{ __('Manage Teachers') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.subscribe_transactions.index')" :active="request()->routeIs('admin.subscribe_transactions.index')">
