@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index') || request()->routeIs('admin.categories.create') ||request()->routeIs('admin.categories.edit')">
                         {{ __('Manage Categories') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.courses.index')" :active="request()->routeIs('admin.courses.index')">
+                    <x-nav-link :href="route('admin.courses.index')" :active="request()->routeIs('admin.courses.index') || request()->routeIs('admin.courses.show')">
                         {{ __('Manage Courses') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.teachers.index')" :active="request()->routeIs('admin.teachers.index') || request()->routeIs('admin.teachers.create') ||request()->routeIs('admin.teachers.edit')">

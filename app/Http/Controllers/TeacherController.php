@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Models\Teacher;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -64,14 +63,6 @@ class TeacherController extends Controller
         });
 
         return redirect()->route('admin.teachers.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Teacher $teacher)
-    {
-        //
     }
 
     /**
