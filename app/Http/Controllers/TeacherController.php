@@ -75,7 +75,7 @@ class TeacherController extends Controller
 
             $user = \App\Models\User::find($teacher->user_id);
             $user->removeRole('teacher');
-            $user->assingRole('student');
+            $user->assignRole('student');
 
             return redirect()->back();
         } catch (\Exception $e) {

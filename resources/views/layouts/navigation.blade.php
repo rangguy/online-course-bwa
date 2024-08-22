@@ -15,18 +15,26 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index') || request()->routeIs('admin.categories.create') ||request()->routeIs('admin.categories.edit')">
-                        {{ __('Manage Categories') }}
-                    </x-nav-link>
+
+                    @role('owner|teacher')
                     <x-nav-link :href="route('admin.courses.index')" :active="request()->routeIs('admin.courses.index') || request()->routeIs('admin.courses.show')">
                         {{ __('Manage Courses') }}
                     </x-nav-link>
+                    @endrole
+
+                    @role('owner')
+                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index') || request()->routeIs('admin.categories.create') ||request()->routeIs('admin.categories.edit')">
+                        {{ __('Manage Categories') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('admin.teachers.index')" :active="request()->routeIs('admin.teachers.index') || request()->routeIs('admin.teachers.create') ||request()->routeIs('admin.teachers.edit')">
                         {{ __('Manage Teachers') }}
                     </x-nav-link>
+
                     <x-nav-link :href="route('admin.subscribe_transactions.index')" :active="request()->routeIs('admin.subscribe_transactions.index')">
                         {{ __('Manage Subscriptions') }}
                     </x-nav-link>
+                    @endrole
                 </div>
             </div>
 

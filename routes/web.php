@@ -5,7 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseVideoController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SubscribeTranscationController;
+use App\Http\Controllers\SubscribeTransactionController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('courses', CourseController::class)->middleware('role:owner|teacher');
 
         // transaksi
-        Route::resource('subscribe_transactions', SubscribeTranscationController::class)->middleware('role:owner');
+        Route::resource('subscribe_transactions', SubscribeTransactionController::class)->middleware('role:owner');
 
         // video
         Route::get('/add/video/{course:id}', [CourseVideoController::class, 'create'])->middleware('role:teacher|owner')->name('course.add_video');
