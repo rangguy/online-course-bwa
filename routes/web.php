@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
-Route::get('/details/{course:slug}', [FrontController::class, 'course'])->name('front.course');
+Route::get('/details/{course:slug}', [FrontController::class, 'details'])->name('front.details');
 
 Route::get('/details/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 
