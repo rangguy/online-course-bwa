@@ -16,7 +16,7 @@ Route::get('/details/{course:slug}', [FrontController::class, 'details'])->name(
 
 Route::get('/details/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 
-Route::get('/details/{pricing:slug}', [FrontController::class, 'pricing'])->name('front.pricing');
+Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
