@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSubscribeTransactionRequest;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\SubscribeTransaction;
 use Illuminate\Http\Request;
@@ -13,7 +14,6 @@ class FrontController extends Controller
 {
     public function index()
     {
-
         $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
 
         return view('front.index', compact('courses'));
@@ -22,6 +22,12 @@ class FrontController extends Controller
     public function details(Course $course)
     {
         return view('front.details', compact('course'));
+    }
+
+    public function category(Category $category){
+        $courses = $category->courses()->get();
+
+        return view('front.category', compact('courses', 'category'));
     }
 
     public function pricing()
