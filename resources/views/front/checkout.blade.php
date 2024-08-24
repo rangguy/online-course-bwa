@@ -9,6 +9,7 @@
         rel="stylesheet" />
     <!-- CSS -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <title>Online Course | Checkout</title>
 </head>
 
 <body class="text-black font-poppins pt-10">
@@ -111,7 +112,8 @@
                 </div>
                 <p class="font-semibold text-[28px] leading-[42px]">Rp 429000</p>
             </div>
-            <form class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
+            <form action="{{ route('front.checkout.store') }}" method="POST" enctype="multipart/form-data" class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
+                @csrf
                 <p class="font-bold text-lg">Send Payment</p>
                 <div class="flex flex-col gap-5">
                     <div class="flex items-center justify-between">
@@ -170,7 +172,7 @@
                         </div>
                         <p id="fileLabel">Add a file attachment</p>
                     </button>
-                    <input id="file" type="file" name="file" class="hidden"
+                    <input id="file" type="file" name="proof" class="hidden"
                         onchange="updateFileName(this)">
                 </div>
                 <button

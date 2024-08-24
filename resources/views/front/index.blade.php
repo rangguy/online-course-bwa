@@ -9,6 +9,7 @@
         rel="stylesheet" />
     <!-- CSS -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <title>Online Course</title>
 </head>
 
 <body class="text-black font-poppins pt-10 pb-[50px]">
