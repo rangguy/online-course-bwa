@@ -32,6 +32,10 @@ class FrontController extends Controller
 
     public function pricing()
     {
+        if(Auth::user()->hasActiveSubscription()){
+            return redirect()->route('front.index');
+        }
+
         return view('front.pricing');
     }
 
@@ -43,7 +47,7 @@ class FrontController extends Controller
     public function checkout_store(StoreSubscribeTransactionRequest $request){
         $user = Auth::user();
 
-        if(Auth::user()->hasActiveSubscription()){
+        if($user->hasActiveSubscription()){
             return redirect()->route('front.index');
         }
 
