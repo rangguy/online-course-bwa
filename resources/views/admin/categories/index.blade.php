@@ -36,7 +36,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure you want to delete this category?');"
-                                    class="font-bold py-4 px-6 bg-red-700 text-white dark:bg-red-500 dark:text-gray-200 rounded-full">
+                                    class="font-bold py-4 px-6 bg-red-700 text-white dark:bg-red-600 dark:text-gray-200 rounded-full">
                                     Delete
                                 </button>
                             </form>

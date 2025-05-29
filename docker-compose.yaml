@@ -6,9 +6,9 @@ services:
     build: .
     image: online-course:1.0.0
     container_name: online-course
+    env_file:
+      - .env
     restart: unless-stopped
-    environment:
-      - SESSION_DRIVER=file
     volumes:
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     depends_on:
@@ -47,7 +47,7 @@ services:
 
   # MySQL Database
   mysql:
-    image: mysql:8
+    image: mysql:8.0
     container_name: mysql
     restart: unless-stopped
     environment:

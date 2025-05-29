@@ -5,7 +5,7 @@
                 {{ __('Manage Courses') }}
             </h2>
             <a href="{{ route('admin.courses.create') }}"
-                class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+               class="font-bold py-4 px-6 bg-indigo-700 text-white dark:bg-indigo-500 dark:text-gray-200 rounded-full">
                 Add New
             </a>
         </div>
@@ -41,13 +41,13 @@
                                 {{ $course->teacher->user->name }}</h3>
                         </div>
                         <div class="hidden md:flex flex-row items-center gap-x-3">
-                            <a href="{{ route('admin.courses.show', $course) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                            <a href="{{ route('admin.courses.show', $course) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white dark:bg-indigo-500 rounded-full">
                                 Manage
                             </a>
                             <form action="{{ route('admin.courses.destroy', $course) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
+                                <button type="submit" class="font-bold py-4 px-6 bg-red-700 dark:bg-red-600 text-white rounded-full">
                                     Delete
                                 </button>
                             </form>

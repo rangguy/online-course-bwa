@@ -5,7 +5,7 @@
                 {{ __('Manage Teachers') }}
             </h2>
             <a href="{{ route('admin.teachers.create') }}"
-               class="font-bold py-4 px-6 bg-indigo-700 dark:bg-indigo-500 text-white dark:text-gray-900 rounded-full">
+               class="font-bold py-4 px-6 bg-indigo-700 text-white dark:bg-indigo-500 dark:text-gray-200 rounded-full">
                 Add New
             </a>
         </div>
@@ -35,7 +35,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
-                                        class="font-bold py-4 px-6 bg-red-700 dark:bg-red-600 text-white dark:text-gray-900 rounded-full">
+                                        class="font-bold py-4 px-6 bg-red-700 dark:bg-red-600 dark:text-white text-gray-900 rounded-full">
                                     Delete
                                 </button>
                             </form>
