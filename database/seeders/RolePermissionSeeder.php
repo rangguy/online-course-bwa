@@ -11,28 +11,32 @@ class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // membuat beberapa role
-        $teacherRole = Role::create([
-            'name' => 'teacher',
-        ]);
+        // Membuat beberapa role
+        $teacherRole = Role::firstOrCreate(['name' => 'teacher']);
+        $studentRole = Role::firstOrCreate(['name' => 'student']);
+        $ownerRole = Role::firstOrCreate(['name' => 'owner']);
 
-        $studentRole = Role::create([
-            'name' => 'student',
-        ]);
+        // Membuat default akun superadmin untuk mengelola data awal
+        $userOwner = User::firstOrCreate(
+            ['email' => 'rangga100@gmail.com'],
+            [
+                'name' => 'Rangga Dwi',
+                'occupation' => 'Engineer',
+                'avatar' => 'images/default-avatar.png',
+                'password' => bcrypt('password'),
+            ]
+        );
 
-        $ownerRole = Role::create([
-            'name' => 'owner',
-        ]);
+        // Sync role owner (hapus semua role lama, assign owner)
+        $userOwner->syncRoles(['owner']);
 
-        // membuat default akun superadmin untuk mengelola data awal
-        $userOwner = User::create([
-            'name' => 'Rangga Dwi',
-            'occupation' => 'Engineer',
-            'avatar' => 'images/default-avatar.png',
-            'email' => 'rangga100@gmail.com',
-            'password' => bcrypt('123123123'),
-        ]);
-
-        $userOwner->assignRole($ownerRole);
+        // Assign role student ke semua user yang belum punya role
+        $usersWithoutRoles = User::whereDoesntHave('roles')->get();
+        foreach ($usersWithoutRoles as $user) {
+            // Skip user owner
+            if ($user->id !== $userOwner->id) {
+                $user->assignRole($studentRole);
+            }
+        }
     }
 }

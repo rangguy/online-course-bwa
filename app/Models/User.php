@@ -35,6 +35,29 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        // Event ketika user baru dibuat
+        static::created(function (User $user) {
+            try {
+                // Log untuk debugging
+                \Log::info('User created event triggered for: ' . $user->email);
+
+                // Cek apakah user sudah punya role
+                if ($user->roles()->count() === 0) {
+                    // Assign role student
+                    $user->assignRole('student');
+                    \Log::info('Student role assigned to: ' . $user->email);
+                }
+            } catch (\Exception $e) {
+                \Log::error('Error assigning role: ' . $e->getMessage());
+            }
+        });
+    }
+
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'course_students');
@@ -48,11 +71,11 @@ class User extends Authenticatable
     public function hasActiveSubscription()
     {
         $latestSubscription = $this->subscribe_transaction()
-        ->where('is_paid', true)
-        ->latest('updated_at')
-        ->first();
+            ->where('is_paid', true)
+            ->latest('updated_at')
+            ->first();
 
-        if(!$latestSubscription){
+        if (!$latestSubscription) {
             return false;
         }
 

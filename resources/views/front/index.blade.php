@@ -90,13 +90,13 @@
                 <img src="assets/icon/logo-55.svg" alt="icon">
             </div>
             <div>
-                <img src="assets/icon/logo.svg" alt="icon">
+                <img src="assets/icon/Logo.svg" alt="icon">
             </div>
             <div>
                 <img src="assets/icon/logo-54.svg" alt="icon">
             </div>
             <div>
-                <img src="assets/icon/logo.svg" alt="icon">
+                <img src="assets/icon/Logo.svg" alt="icon">
             </div>
             <div>
                 <img src="assets/icon/logo-52.svg" alt="icon">
